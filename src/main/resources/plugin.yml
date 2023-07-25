@@ -1,0 +1,7 @@
+name: FindAllItems
+version: '${project.version}'
+main: dev.mirow.findallitems.FindAllItems
+api-version: '1.20'
+
+commands:
+  skipitem:
