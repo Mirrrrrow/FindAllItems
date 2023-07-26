@@ -1,2 +1,14 @@
 currentitem: 1
+locales:
+  prefix: '&8| &f&lFindAllItems &8» &7'
+  item-registered: '&7Das Folgende Item wurde registriert: &f%item_found% &7es fehlen noch &f%remaining_items% &7Items.'
+  #item-registered: '&7The following item got found: &f%item_found% &7there are &f%remaining_items% &7remaining items..'
+  all-items-found: 'Alle Items wurden gefunden, ihr habt die Challenge erfolgreich geschafft.'
+  #all-items-found: 'All items got found, you have won the challenge!'
+  skip-item: '&7Der Spieler &f%player% &7hat das Item &f%name% &7übersprungen.'
+  #skip-item: '&7The player &fplayer% &7skipped the item &f%name%&7.'
+  join-message: '&7Der Spieler &f%player% &7hat den Server betreten.'
+  #join-message: '&7The player &f%player% &7joined the server.'
+  quit-message: '&7Der Spieler &f%player% &7hat den Server verlassen.'
+  #quit-message: '&7The player &f%player% &7left the server.'
 materials:

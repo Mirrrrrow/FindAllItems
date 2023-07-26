@@ -58,7 +58,8 @@ public class RandomItem {
 
         for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
             onlinePlayer.playSound(onlinePlayer.getLocation(), Sound.BLOCK_NOTE_BLOCK_BELL, 1.0f, 1.0f);
-            onlinePlayer.sendMessage(FindAllItems.PREFIX + "§7Das folgende Item wurde registriert: §f" + itemName + " §7es fehlen noch §f" + (this.remainingItems.size() - this.currentItemInt) + " §7Items.");
+            String itemFound = instance.getConfig().get("locales.item-registered").toString().replace('&', '§').replace("%item_found%", itemName).replace("%remaining_items%", String.valueOf(this.remainingItems.size() - this.currentItemInt));
+            onlinePlayer.sendMessage(FindAllItems.PREFIX + itemFound);
         }
 
         generateRandomItem();
@@ -70,14 +71,14 @@ public class RandomItem {
         if (this.currentItemInt == this.remainingItems.size()) {
             for (Player onlinePlayer: Bukkit.getOnlinePlayers()) {
                 onlinePlayer.playSound(onlinePlayer.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1.0f, 1.0f);
-                onlinePlayer.sendMessage(FindAllItems.PREFIX + "Alle Items wurden gefunden, ihr habt die Challenge erfolgreich geschafft.");
+                String message = instance.getConfig().get("locales.all-items-found").toString().replace('&', '§');
+                onlinePlayer.sendMessage(FindAllItems.PREFIX + message);
                 onlinePlayer.setGameMode(GameMode.SPECTATOR);
             }
             return;
         }
 
         Material newMaterial = Material.matchMaterial(this.remainingItems.get(this.currentItemInt - 1));
-        Bukkit.getConsoleSender().sendMessage("New Item: " + this.currentItemInt);
         this.material = newMaterial;
     }
 

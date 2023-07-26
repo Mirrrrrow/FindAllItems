@@ -20,7 +20,9 @@ public class QuitListener implements Listener {
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
-        event.setQuitMessage(FindAllItems.PREFIX + "§7Der Spieler §f" + player.getName() + " §7hat den Server verlassen.");
+
+        String message = instance.getConfig().get("locales.quit-message").toString().replace('&', '§').replace("%player%", player.getName());
+        event.setQuitMessage(FindAllItems.PREFIX + message);
 
     }
 }

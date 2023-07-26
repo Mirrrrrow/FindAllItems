@@ -20,7 +20,8 @@ public class SkipItem implements CommandExecutor {
         if (sender instanceof Player player) {
             if (player.hasPermission("findallitems.commands.skipitem")) {
                 for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
-                    onlinePlayer.sendMessage(FindAllItems.PREFIX + "§7Der Spieler §f" + player.getName() + " §7hat das Item §f" + instance.getRandomItem().getItemName(instance.getRandomItem().material) + " §7übersprungen.");
+                    String message = instance.getConfig().get("locales.skip-item").toString().replace('&', '§').replace("%player%", player.getName()).replace("%name%", instance.getRandomItem().getItemName(instance.getRandomItem().material));
+                    onlinePlayer.sendMessage(FindAllItems.PREFIX + message);
                 }
                 instance.getRandomItem().getItem();
             } else {

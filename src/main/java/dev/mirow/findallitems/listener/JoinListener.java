@@ -19,7 +19,10 @@ public class JoinListener implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        event.setJoinMessage(FindAllItems.PREFIX + "§7Der Spieler §f" + player.getName() + " §7hat den Server betreten.");
+
+        System.out.println(instance.getConfig().get("locales.prefix").toString());
+        String message = instance.getConfig().get("locales.join-message").toString().replace('&', '§').replace("%player%", player.getName());
+        event.setJoinMessage(FindAllItems.PREFIX + message);
 
         instance.getBossBarUtils().addPlayer(player);
 

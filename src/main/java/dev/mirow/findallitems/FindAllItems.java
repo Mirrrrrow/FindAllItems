@@ -20,13 +20,15 @@ public final class FindAllItems extends JavaPlugin {
     @Getter
     public RandomItem randomItem;
 
-    public static final String PREFIX = "§8| §f§lFindAllItems §8» §7";
+    public static String PREFIX = "LOADING";
     @Override
     public void onEnable() {
         instance = this;
         instance.saveResource("config.yml", false);
         instance.getConfig().options().copyDefaults(true);
         instance.saveConfig();
+
+        PREFIX = instance.getConfig().get("locales.prefix").toString().replace('&', '§');
 
         randomItem = new RandomItem(this);
 
